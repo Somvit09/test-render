@@ -1,6 +1,7 @@
 databases:
   - name: db.sqlite3
     databaseName: db.sqlite3
+    user: db.sqlite3
 
 services:
   - type: web
@@ -8,9 +9,3 @@ services:
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn mysite.wsgi:application"
-    envVars:
-        fromDatabase:
-          name: db.sqlite3
-        generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
