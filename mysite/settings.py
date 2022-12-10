@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%t4muhu)bba!_ih^8*dlu7yy5+(dul&^catzo=a-hntzfhu0x#'
+
+SECRET_KEY = environ.get('SECRET_KEY', default='django-insecure-%t4muhu)bba!_ih^8*dlu7yy5+(dul&^catzo=a-hntzfhu0x#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,6 +83,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+import psycopg2
+connection = psycopg2.connect(host='localhost', user='postgres',
+                              password='1234', 
+                              dbname='postgres', port=5432)
 
 
 # Password validation

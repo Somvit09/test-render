@@ -1,7 +1,7 @@
 databases:
-  - name: db.sqlite3
-    databaseName: db.sqlite3
-
+  - name: postgres
+    databaseName: postgres
+    user: postgres
 
 services:
   - type: web
@@ -9,3 +9,12 @@ services:
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
