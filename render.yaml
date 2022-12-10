@@ -1,7 +1,7 @@
 databases:
   - name: test_render
     databaseName: test_render
-    user: postgres
+    user: test_render
 
 services:
   - type: web
