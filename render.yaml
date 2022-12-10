@@ -1,7 +1,7 @@
 databases:
   - name: db.sqlite3
     databaseName: db.sqlite3
-    user: db.sqlite3
+
 
 services:
   - type: web
